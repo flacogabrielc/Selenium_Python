@@ -1,0 +1,8 @@
+1 git init
+2 git remote addo origin ....
+3 git add *   (agrega odos los archivos desde donde estoy parado)
+4 commint - m "comentario del comit"
+5 git push origin master  -> pushea desde la rama que estoy parado a master (actualmente es master pero puedo tener varias del mismo codigo)
+
+1 clonar repositorio
+2 git clone - y el repo
