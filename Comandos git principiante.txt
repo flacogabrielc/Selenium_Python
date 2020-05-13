@@ -6,3 +6,5 @@
 
 1 clonar repositorio
 2 git clone - y el repo
+3 git pull origin master (traer lo que hizo el otro)
+prueba
