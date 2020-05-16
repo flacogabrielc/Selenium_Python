@@ -1,6 +1,8 @@
 1 git init
 2 git remote addo origin ....
 3 git add *   (agrega odos los archivos desde donde estoy parado)
+  git add .
+  git push -u origin master
 4 commint - m "comentario del comit"
 5 git push origin master  -> pushea desde la rama que estoy parado a master (actualmente es master pero puedo tener varias del mismo codigo)
 
@@ -8,4 +10,5 @@
 2 git clone - y el repo
 
 como hacer pull para traer los cambios en el ambiente de trabajo?
+git pull origin master
 como hacer ramas distintas? ej para ir armando bugs o lo que sea
