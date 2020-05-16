@@ -1,18 +1,29 @@
-#2-Si el pedido no es uno de los autos en venta, entonces debe volver a preguntar hasta que si lo sea
-#3-Lo mismo con la cantidad de puertas y los colores.
-#4-Al final se pregunta si hay otro cliente o no, si hay otro cliente, entonces vuelve a preguntar todo.
-#5-Si la cantidad de clientes fue:
-#--5.1: 0 a 5 personas no hay descuento
-#--5.2: 6 a 10 personas: hay un descuento del 10%
-#--5.3: 11 a 50 personas: hay un descuento del 15%
-#--5.4: Más de 50 personas: El descuento es del 18%
-#6-Solo se va a mostrar que se vendió al final del programa
 def es_la_marca(mar):
     if mar=='FORD':
         return True
     elif mar=='CHEVROLET':
         return True
     elif mar=='FIAT':
+        return True
+    else:
+        return False
+
+def son_las_puertas(puer):
+    if puer=='2':
+        return True
+    elif puer=='4':
+        return True
+    elif puer=='5':
+        return True
+    else:
+        return False
+
+def es_color(col):
+    if col=='BLANCO':
+        return True
+    elif col=='AZUL':
+        return True
+    elif col=='NEGRO':
         return True
     else:
         return False
@@ -42,24 +53,58 @@ def calcular_precio(marc, puer, color):
     pprecio= pmarc + ppuer + pcolor
     return pprecio
 
+def descuento(contador):
+    if contador <=5:
+        pdesc=1
+    elif contador > 5 and contador < 11:
+        pdesc=0.90
+    elif contador > 10 < 51:
+        pdesc=0.85
+    else:
+        pdesc=0.82
+    return pdesc
+
 respuesta =True
+cont=0
+comtot=0
+precio=0
 while respuesta==True:
+    cont+=1
     precio=0
     nombre=input('Ingrese el nombre del comprador: ')
     apellido=input('Ingrese el apellido del comprador: ')
     marca=(input('Ingrese una marca: ')).upper()
     es_marca=es_la_marca(marca)
+    while es_marca==False:
+        marca=(input('Ingrese una marca: ')).upper()
+        es_marca=es_la_marca(marca)
+
     if es_marca == True:
         puertas=input('Ingrese cantidad de puertas: ')
+        son_puertas=son_las_puertas(puertas)
+
+    while son_puertas==False:
+        puertas=input('Ingrese cantidad de puertas: ')
+        son_puertas=son_las_puertas(puertas)
+
+    if son_puertas==True:
         color=(input('Ingrese el color: ')).upper()
+        es_el_color=es_color(color)
+
+    while es_el_color==False:
+        color=(input('Ingrese el color: ')).upper()
+        es_el_color=es_color(color)
+
+    if es_el_color==True:
         precio= (calcular_precio(marca, puertas, color))
-        print('El nombre del comprador es: ' + nombre + ', el apellido del comprador es: ' + apellido + ' y el precio del auto es: ' + str(precio))
+        comtot=comtot + precio
+        des=descuento(cont)
+        preciofin= des * comtot
         hayotro=(input('hay otro cliente para ingresar? si/no  ')).upper()
+
         if hayotro=='SI':
             es_marca==False
             #respuesta=True
         elif hayotro=='NO':
+            print('La cantidad de ventas totales son: '  + str(cont) + ' ' + 'La venta total del dia es: $' + str(comtot) + '  ' + 'El precio total con descuento es: $' + str(preciofin))
             respuesta=False
-
-#    else:
-#        marca=(input('Ingrese una marca: ')).upper()
